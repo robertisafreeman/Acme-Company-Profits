@@ -23,16 +23,17 @@
                 }
                 async componentDidMount() {
                     
-                    const urls = ['https://acme-users-api-rev.herokuapp.com/api/companies',
-                                'https://acme-users-api-rev.herokuapp.com/api/companies/1739af9e-93ad-4056-93d5-41c112359e2b/companyProfits'] ;
-                    const responses = await Promise.all(urls.map( url => axios.get(url)));
-
-                }
-                render(){
+                    const url = 'https://acme-users-api-rev.herokuapp.com/api/companies';
+                    const response1 = await axios.get(url)
+                    console.log(response1);
                     
                 }
+
+                render(){
+                    return null
+                }
             }
-            render(<hr/>, root)
+            render(<App/>, root)
         </script>
     </body>
 </html>
