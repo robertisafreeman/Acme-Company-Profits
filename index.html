@@ -14,32 +14,11 @@
             const {HashRouter, Link, Route, Switch, Redirect} = ReactRouterDOM;
             const root = document.querySelector('#root');
 
-            const Companies = ({ companies }) => {
+            const Companies = ({companiesProp})=>{
+                console.log(companiesProp)
                 return(
-                    <div>
-                        <h1>Companies</h1>
-                        <ul>
-                            {
-                                companies.map(company =>
-                                <li key={company.id}>
-                                {company.name}
-                                <div>{company.catchPhrase}</div>
-                                <div>
-                                Offering:
-                                <ul>
-                                {
-                                    company.offerings.map(product =>
-                                        <li key={product.product.id}>
-                                            {product.product.name} {product.price.toFixed(2)}
-                                        </li>)
-                                }
-                                </ul>
-                                </div>
-                                </li>)
-                            }
-                        </ul>
-                    </div>
-                );
+                    companiesProp.map
+                )
             }
 
             class App extends Component {
@@ -50,6 +29,9 @@
                         profits: []
                     }
                 }
+
+
+
                 async componentDidMount() {
                     const url = 'https://acme-users-api-rev.herokuapp.com/api/companies';
                     const response1 = await axios.get(url);
@@ -59,9 +41,17 @@
                 }
                 
                 render(){
-                    return null
+                    const {companies, products} = this.state
+                    console.log(companies)
+                    return (
+                        <HashRouter>
+                            <Route path='/companies' render={()=><Companies companiesProp = {companies}/>}/>
+                                <hr/>
+                        </HashRouter>
+                    )
                 }
             }
+
             render(<App/>, root)
         </script>
     </body>
