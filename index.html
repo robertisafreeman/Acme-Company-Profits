@@ -8,8 +8,29 @@
     </head>
     <body>
         <div id='root'></div>
-        <script>
-            
+        <script type='text/babel'>
+            const { render } = ReactDOM;
+            const {Component} = React;
+            const {HashRouter, Link, Route, Switch, Redirect} = ReactRouterDOM;
+            const root = document.querySelector('#root');
+
+            class App extends Component {
+                constructor() {
+                    super();
+                    this.state = {
+                        companies: []
+                    }
+                }
+                async componentDidMount() {
+                    const urls = ['https://acme-users-api-rev.herokuapp.com/api/companies'] ;
+                    const responses = await Promise.all(urls.map( url => axios.get(url)));
+
+                }
+                render(){
+                    
+                }
+            }
+            render(<hr/>, root)
         </script>
     </body>
 </html>
