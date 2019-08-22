@@ -55,8 +55,9 @@
                     console.log(companies)
                     return (
                         <HashRouter>
+                            
+                            <hr/>
                             <Route path='/companies' render={()=><Companies companiesProp = {companies}/>}/>
-                                <hr/>
                         </HashRouter>
                     )
                 }
